@@ -264,14 +264,32 @@ const CONFIG = {
   $("a-mail").href="mailto:"+CONFIG.email;
   $("a-kakao").href=CONFIG.kakao;
 
+  const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const players=[];
   document.querySelectorAll(".project").forEach(pr=>{
     const track=pr.querySelector(".track"),dots=pr.querySelector(".dots"),slides=[...track.children];
     const step=()=>slides[0].offsetWidth+18;
+    const cur=()=>Math.round(track.scrollLeft/step());
+    const go=i=>track.scrollTo({left:i*step(),behavior:reduce?"auto":"smooth"});
+    const p={track,holdUntil:0,next(){const n=cur()+1;go(n>=slides.length?0:n)}};
+    const hold=()=>{p.holdUntil=Date.now()+5000};          /* 손으로 넘기면 5초 쉬었다가 다시 자동 */
     slides.forEach((sl,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",(i+1)+"번 사진");
-      b.onclick=()=>track.scrollTo({left:i*step(),behavior:"smooth"});dots.appendChild(b)});
-    const mark=()=>{const i=Math.round(track.scrollLeft/step());[...dots.children].forEach((d,k)=>d.setAttribute("aria-current",k===i))};
+      b.onclick=()=>{hold();go(i)};dots.appendChild(b)});
+    const mark=()=>{const i=cur();[...dots.children].forEach((d,k)=>d.setAttribute("aria-current",k===i))};
     track.addEventListener("scroll",()=>requestAnimationFrame(mark),{passive:true});mark();
+    ["pointerdown","touchstart","wheel","keydown"].forEach(e=>track.addEventListener(e,hold,{passive:true}));
+    players.push(p);
   });
+  /* 1.5초마다: 화면에 충분히 보이는 슬라이드 중 화면 가운데에 가장 가까운 하나만 넘김 */
+  setInterval(()=>{
+    if(document.hidden) return;
+    const vh=innerHeight,mid=vh/2;let best=null,bd=1e9;
+    players.forEach(p=>{const r=p.track.getBoundingClientRect();
+      const shown=Math.min(r.bottom,vh)-Math.max(r.top,0);
+      if(shown<r.height*0.6) return;
+      const d=Math.abs((r.top+r.bottom)/2-mid); if(d<bd){bd=d;best=p}});
+    if(best&&Date.now()>=best.holdUntil) best.next();
+  },1500);
 
   document.querySelectorAll(".copy").forEach(btn=>{
     btn.addEventListener("click",()=>{
