@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#F0EEE9">
+<meta name="description" content="제주 인테리어 디자이너 정대현 — 설계, 3D 렌더링, 시공관리">
+<meta property="og:type" content="profile">
+<meta property="og:title" content="디자이너 정대현">
+<meta property="og:description" content="제주 인테리어 설계 · 3D 렌더링 · 시공관리">
+<meta property="og:image" content="og.jpg">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>디자이너 정대현</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&family=Jost:wght@300;400&family=DM+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: 로고 락업 히어로 + 가벼운 정보 블록. 팬톤 2026 Cloud Dancer 기반 */
+:root{
+  --bg:#F0EEE9;          /* Cloud Dancer — PANTONE 11-4201 (팬톤 2026) */
+  --surface:#F8F7F4;
+  --ink:#2E2A26;
+  --ink-2:#857E76;
+  --line:#E2DED7;
+  --blue:#F8F7F4;
+  --blue-deep:#EAE7E1;
+  --on-blue:#2E2A26;
+  --blue-hi:#FFFFFF;
+  --grid:rgba(0,0,0,.025);
+  --blue-tint:#ECE9E3;
+  --act:#5C544C;
+  color-scheme:light;
+  --f-sans:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+  --f-logo:"Jost","Futura","Avenir Next",sans-serif;
+  --f-mono:"DM Mono",ui-monospace,Menlo,monospace;
+  --r:22px;
+}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-sans);font-size:15px;line-height:1.6;word-break:keep-all;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:16px 40px}
+.card{max-width:440px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.mono{font-family:var(--f-mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+
+/* 히어로 */
+.hero{position:relative;overflow:hidden;border-radius:var(--r);border:1px solid var(--line);color:var(--on-blue);
+  background:radial-gradient(120% 90% at 100% 0%,var(--blue-hi) 0%,transparent 55%),linear-gradient(155deg,var(--blue) 0%,var(--blue-deep) 100%);
+  padding:34px 22px 26px;display:flex;flex-direction:column;align-items:stretch;gap:26px;min-height:0}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg,var(--grid) 0 1px,transparent 1px 40px)}
+.hero>*{position:relative;z-index:1}
+.jmark{width:22px;height:48px;display:block;margin:0 auto}
+.jmark.sm{width:10px;height:22px;margin:0;color:var(--ink-2)}
+.lockup{display:flex;flex-direction:column;align-items:center;gap:10px}
+.name{font-weight:700;font-size:30px;line-height:1.1;letter-spacing:.02em;margin:0}
+.en{font-family:var(--f-logo);font-weight:400;font-size:13px;letter-spacing:.42em;padding-left:.42em}
+.dash{width:22px;height:1.5px;background:currentColor;opacity:.8;margin:2px 0}
+.sub{font-family:var(--f-logo);font-weight:300;font-size:10.5px;letter-spacing:.42em;padding-left:.42em;opacity:.8}
+.role{margin:0;text-align:center;font-size:13px;opacity:.85}
+
+/* 액션 */
+.actions{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.act{display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 4px 11px;background:var(--surface);border-radius:16px;
+  color:var(--ink);text-decoration:none;font-size:12.5px;font-weight:500}
+.act span.ic{width:38px;height:38px;border-radius:50%;background:var(--blue-tint);display:grid;place-items:center}
+.act svg{width:19px;height:19px;stroke:var(--act,var(--blue));fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.act:active{transform:scale(.97)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
+
+.panel{background:var(--surface);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:14px}
+.save{display:flex;align-items:center;justify-content:center;gap:8px;padding:15px;border-radius:14px;background:#4A433C;color:#F8F7F4;
+  font-size:15px;font-weight:600;text-decoration:none}
+.save svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.row{display:grid;grid-template-columns:58px 1fr auto;align-items:center;gap:10px}
+.row .mono{color:var(--ink-2)}
+.row .v{font-size:15px;font-weight:500;min-width:0;overflow-wrap:anywhere;user-select:all;font-variant-numeric:tabular-nums}
+.copy{font-family:var(--f-sans);font-size:12px;font-weight:500;padding:6px 12px;border-radius:999px;border:0;background:var(--bg);color:var(--ink-2);cursor:pointer}
+.copy.done{background:var(--blue-tint);color:var(--blue)}
+
+h2{font-size:17px;font-weight:700;margin:0;letter-spacing:-.01em}
+.sec-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.sec-head a{color:var(--act,var(--blue));text-decoration:none;font-size:13px;font-weight:500}
+
+.project{display:flex;flex-direction:column;gap:12px}
+.project+.project{border-top:1px solid var(--line);padding-top:18px;margin-top:6px}
+.proj{display:flex;flex-direction:column;gap:2px}
+.proj b{font-size:15px;font-weight:700}
+.proj span{font-family:var(--f-logo);font-size:10.5px;letter-spacing:.18em;color:var(--ink-2)}
+.slider{position:relative;margin-inline:-18px}
+.track{display:flex;gap:18px;overflow-x:auto;scroll-snap-type:x mandatory;padding-inline:18px;scroll-padding-inline:18px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 100%;margin:0;scroll-snap-align:start;display:flex;flex-direction:column;gap:8px;min-width:0}
+.slide .img{aspect-ratio:16/9;max-width:100%;border-radius:12px;overflow:hidden;background:var(--blue-tint)}
+.slide .img img{width:100%;height:100%;object-fit:cover;display:block}
+.slide.tall .img{background:var(--bg)}
+.slide.tall .img img{object-fit:contain}
+.slide figcaption{display:flex;justify-content:space-between;gap:10px;font-size:13px;color:var(--ink-2)}
+.slide figcaption em{font-style:normal;font-family:var(--f-mono);font-size:11px;letter-spacing:.08em}
+.dots{display:flex;justify-content:center;gap:6px;padding-top:2px}
+.dots button{width:6px;height:6px;padding:0;border:0;border-radius:50%;background:var(--line);cursor:pointer}
+.dots button[aria-current="true"]{background:var(--ink);width:16px;border-radius:3px}
+@media (prefers-reduced-motion:no-preference){.dots button{transition:width .2s,background .2s}}
+
+.me{display:grid;grid-template-columns:92px 1fr;gap:16px;align-items:center}
+.photo{width:92px;height:121px;object-fit:cover;border-radius:12px;display:block;background:var(--blue-tint)}
+.me-text{display:flex;flex-direction:column;gap:2px;min-width:0}
+.me-text b{font-size:17px;font-weight:700}
+.en-sm{font-family:var(--f-logo);font-size:10.5px;letter-spacing:.3em;color:var(--ink-2)}
+.me-text p{margin:8px 0 0;font-size:13.5px;line-height:1.6;color:var(--ink-2)}
+.cv{display:flex;flex-direction:column;gap:10px;padding-top:14px;border-top:1px solid var(--line)}
+.cv-h{color:var(--ink-2);font-size:10.5px}
+.cv ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.cv li{display:grid;grid-template-columns:48px 1fr;gap:8px;font-size:14px}
+.cv em{font-style:normal;font-family:var(--f-mono);font-size:12px;color:var(--act,var(--ink-2));padding-top:2px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chips span{font-size:12.5px;padding:5px 11px;border-radius:999px;background:var(--bg);color:var(--ink)}
+
+
+footer{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 4px 0;color:var(--ink-2)}
+@media (prefers-reduced-motion:no-preference){.act{transition:transform .12s}}
+</style>
+</head>
+<body>
+
+
+<main class="card">
+  <header class="hero">
+    <!-- 정테리어 J 로고 (원본 로고에서 따온 선 형태) -->
+    <svg class="jmark" viewBox="0 0 64 140" fill="none" stroke="currentColor" stroke-width="2.4" aria-label="J 로고" role="img"><path d="M6 2H62V138H2V68"/></svg>
+    <div class="lockup">
+      <h1 class="name">정대현</h1>
+      <div class="en">JEONG DAE HYEON</div>
+      <i class="dash"></i>
+      <div class="sub">INTERIOR DESIGN</div>
+    </div>
+    <p class="role">설계 · 3D 렌더링 · 시공관리 · 제주</p>
+  </header>
+
+  <nav class="actions" aria-label="연락하기">
+    <a class="act" id="a-tel" href="#"><span class="ic"><svg viewBox="0 0 24 24"><path d="M5 3h4l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2"/></svg></span>전화</a>
+    <a class="act" id="a-sms" href="#"><span class="ic"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></span>문자</a>
+    <a class="act" id="a-kakao" href="#" target="_blank" rel="noopener"><span class="ic"><svg viewBox="0 0 24 24"><path d="M12 4c5 0 9 3 9 7s-4 7-9 7l-1.5-.1L6 21l.8-4.2C4.5 15.5 3 13.4 3 11c0-4 4-7 9-7z"/></svg></span>카톡</a>
+    <a class="act" id="a-mail" href="#"><span class="ic"><svg viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 6l9 7 9-7"/></svg></span>메일</a>
+  </nav>
+
+  <section class="panel" aria-label="연락처">
+    <div class="row"><span class="mono">Mobile</span><span class="v" id="v-tel"></span><button class="copy" type="button" data-copy="v-tel">복사</button></div>
+    <div class="row"><span class="mono">Email</span><span class="v" id="v-mail"></span><button class="copy" type="button" data-copy="v-mail">복사</button></div>
+    <div class="row"><span class="mono">Kakao</span><span class="v" id="v-kakao"></span><button class="copy" type="button" data-copy="v-kakao">복사</button></div>
+    <a class="save" id="a-vcf" href="daehyun.vcf"><svg viewBox="0 0 24 24"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>연락처 저장하기</a>
+  </section>
+
+  <section class="panel">
+    <h2>최근 작업</h2>
+    <div class="project">
+      <div class="proj"><b>노형부영1차 아파트</b><span>NOHYEONG BOOYOUNG 1ST APT.</span></div>
+      <div class="slider">
+        <div class="track" tabindex="0" aria-label="노형부영1차 아파트 사진, 옆으로 넘겨보기">
+        <figure class="slide"><div class="img"><img src="images/nohyeong-02-kitchen.jpg" alt="노형부영1차 아파트 주방" loading="eager" width="966" height="541"></div><figcaption><span>주방</span><em>01 / 06</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/nohyeong-01-living.jpg" alt="노형부영1차 아파트 거실" loading="lazy" width="966" height="541"></div><figcaption><span>거실</span><em>02 / 06</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/nohyeong-03-kitchen-island.jpg" alt="노형부영1차 아파트 아일랜드 주방" loading="lazy" width="966" height="541"></div><figcaption><span>아일랜드 주방</span><em>03 / 06</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/nohyeong-04-hall.jpg" alt="노형부영1차 아파트 거실 · 복도" loading="lazy" width="966" height="541"></div><figcaption><span>거실 · 복도</span><em>04 / 06</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/nohyeong-05-bedroom.jpg" alt="노형부영1차 아파트 안방" loading="lazy" width="966" height="541"></div><figcaption><span>안방</span><em>05 / 06</em></figcaption></figure>
+        <figure class="slide tall"><div class="img"><img src="images/nohyeong-06-powder.jpg" alt="노형부영1차 아파트 세면 공간" loading="lazy" width="536" height="964"></div><figcaption><span>세면 공간</span><em>06 / 06</em></figcaption></figure>
+        </div>
+      </div>
+      <div class="dots"></div>
+    </div>
+    <div class="project">
+      <div class="proj"><b>노형 아이파크 103동</b><span>NOHYEONG I-PARK 103</span></div>
+      <div class="slider">
+        <div class="track" tabindex="0" aria-label="노형 아이파크 103동 사진, 옆으로 넘겨보기">
+        <figure class="slide"><div class="img"><img src="images/ipark103-02-kitchen.jpg" alt="노형 아이파크 103동 주방" loading="lazy" width="1200" height="675"></div><figcaption><span>주방</span><em>01 / 11</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/ipark103-01-living.jpg" alt="노형 아이파크 103동 거실" loading="lazy" width="1200" height="676"></div><figcaption><span>거실</span><em>02 / 11</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/ipark103-03-living-kitchen.jpg" alt="노형 아이파크 103동 거실 · 주방" loading="lazy" width="1200" height="675"></div><figcaption><span>거실 · 주방</span><em>03 / 11</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/ipark103-04-dining.jpg" alt="노형 아이파크 103동 다이닝 · 서재" loading="lazy" width="1200" height="675"></div><figcaption><span>다이닝 · 서재</span><em>04 / 11</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/ipark103-05-master-bedroom.jpg" alt="노형 아이파크 103동 안방" loading="lazy" width="1200" height="675"></div><figcaption><span>안방</span><em>05 / 11</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/ipark103-06-bedroom-desk.jpg" alt="노형 아이파크 103동 침실 · 작업 공간" loading="lazy" width="1200" height="675"></div><figcaption><span>침실 · 작업 공간</span><em>06 / 11</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/ipark103-07-bedroom.jpg" alt="노형 아이파크 103동 침실" loading="lazy" width="1200" height="675"></div><figcaption><span>침실</span><em>07 / 11</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/ipark103-08-bath.jpg" alt="노형 아이파크 103동 욕실" loading="lazy" width="1200" height="675"></div><figcaption><span>욕실</span><em>08 / 11</em></figcaption></figure>
+        <figure class="slide tall"><div class="img"><img src="images/ipark103-09-powder.jpg" alt="노형 아이파크 103동 파우더룸" loading="lazy" width="435" height="941"></div><figcaption><span>파우더룸</span><em>09 / 11</em></figcaption></figure>
+        <figure class="slide tall"><div class="img"><img src="images/ipark103-10-bath-dark.jpg" alt="노형 아이파크 103동 욕실" loading="lazy" width="915" height="941"></div><figcaption><span>욕실</span><em>10 / 11</em></figcaption></figure>
+        <figure class="slide tall"><div class="img"><img src="images/ipark103-11-bath-grey.jpg" alt="노형 아이파크 103동 욕실" loading="lazy" width="1200" height="1234"></div><figcaption><span>욕실</span><em>11 / 11</em></figcaption></figure>
+        </div>
+      </div>
+      <div class="dots"></div>
+    </div>
+    <div class="project">
+      <div class="proj"><b>노형 뜨란채 203동</b><span>NOHYEONG TTEURANCHAE 203</span></div>
+      <div class="slider">
+        <div class="track" tabindex="0" aria-label="노형 뜨란채 203동 사진, 옆으로 넘겨보기">
+        <figure class="slide"><div class="img"><img src="images/ttrancha203-02-kitchen.jpg" alt="노형 뜨란채 203동 주방" loading="lazy" width="1200" height="857"></div><figcaption><span>주방</span><em>01 / 08</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/ttrancha203-01-living.jpg" alt="노형 뜨란채 203동 거실" loading="lazy" width="1200" height="675"></div><figcaption><span>거실</span><em>02 / 08</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/ttrancha203-03-living-hall.jpg" alt="노형 뜨란채 203동 거실 · 복도" loading="lazy" width="1200" height="675"></div><figcaption><span>거실 · 복도</span><em>03 / 08</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/ttrancha203-04-entrance-hall.jpg" alt="노형 뜨란채 203동 현관 · 복도" loading="lazy" width="1200" height="675"></div><figcaption><span>현관 · 복도</span><em>04 / 08</em></figcaption></figure>
+        <figure class="slide tall"><div class="img"><img src="images/ttrancha203-05-entrance.jpg" alt="노형 뜨란채 203동 현관" loading="lazy" width="869" height="940"></div><figcaption><span>현관</span><em>05 / 08</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/ttrancha203-06-bedroom.jpg" alt="노형 뜨란채 203동 침실" loading="lazy" width="1200" height="675"></div><figcaption><span>침실</span><em>06 / 08</em></figcaption></figure>
+        <figure class="slide"><div class="img"><img src="images/ttrancha203-07-bath.jpg" alt="노형 뜨란채 203동 욕실" loading="lazy" width="1200" height="675"></div><figcaption><span>욕실</span><em>07 / 08</em></figcaption></figure>
+        <figure class="slide tall"><div class="img"><img src="images/ttrancha203-08-bath-dark.jpg" alt="노형 뜨란채 203동 욕실" loading="lazy" width="915" height="941"></div><figcaption><span>욕실</span><em>08 / 08</em></figcaption></figure>
+        </div>
+      </div>
+      <div class="dots"></div>
+    </div>
+  </section>
+
+  <section class="panel about">
+    <h2>About</h2>
+    <div class="me">
+      <img class="photo" src="images/profile.jpg" alt="정대현 프로필 사진" width="618" height="813" loading="lazy">
+      <div class="me-text">
+        <b>정대현</b>
+        <span class="en-sm">JEONG DAE HYEON</span>
+        <p>현장에서 시작해 설계까지. 시공을 아는 디자이너로 제주의 주거 공간을 그립니다.</p>
+      </div>
+    </div>
+    <div class="cv">
+      <span class="mono cv-h">Career</span>
+      <ul>
+        <li><em>2026</em><span>디자인엠제곱 디자인과장</span></li>
+        <li><em>2024</em><span>한샘 리하우스 디자이너(RD)</span></li>
+        <li><em>2022</em><span>인테리어 시공감리</span></li>
+        <li><em>2019</em><span>위생설비 시공</span></li>
+      </ul>
+    </div>
+    <div class="cv">
+      <span class="mono cv-h">License &amp; Edu</span>
+      <ul>
+        <li><em>2024</em><span>인쇼아카데미 10기 Lv1 수료</span></li>
+        <li><em>2023</em><span>실내건축기능사</span></li>
+      </ul>
+    </div>
+    <div class="cv">
+      <span class="mono cv-h">Tools</span>
+      <div class="chips"><span>SketchUp</span><span>Enscape</span><span>AutoCAD</span></div>
+    </div>
+  </section>
+
+
+  <footer>
+    <svg class="jmark sm" viewBox="0 0 64 140" fill="none" stroke="currentColor" stroke-width="5" aria-hidden="true"><path d="M6 2H62V138H2V68"/></svg>
+    <span class="mono">© 2026</span>
+  </footer>
+</main>
+
+<script>
+/* ===== 여기만 고치면 됨 ===== */
+const CONFIG = {
+  phone:   "010-7589-8627",
+  email:   "eogus2689@naver.com",
+  kakao:   "https://qr.kakao.com/talk/WmUlnIGKH3e0oQKHWVeWD2bpIXw-",  // 카톡 친구추가 링크 (내 QR코드)
+  kakaoId: "eogus7380"
+};
+/* ========================== */
+(function(){
+  const $=id=>document.getElementById(id);
+  const digits=CONFIG.phone.replace(/[^0-9+]/g,"");
+  $("v-tel").textContent=CONFIG.phone;
+  $("v-mail").textContent=CONFIG.email;
+  $("v-kakao").textContent=CONFIG.kakaoId;
+  $("a-tel").href="tel:"+digits;
+  $("a-sms").href="sms:"+digits;
+  $("a-mail").href="mailto:"+CONFIG.email;
+  $("a-kakao").href=CONFIG.kakao;
+
+  document.querySelectorAll(".project").forEach(pr=>{
+    const track=pr.querySelector(".track"),dots=pr.querySelector(".dots"),slides=[...track.children];
+    const step=()=>slides[0].offsetWidth+18;
+    slides.forEach((sl,i)=>{const b=document.createElement("button");b.type="button";b.setAttribute("aria-label",(i+1)+"번 사진");
+      b.onclick=()=>track.scrollTo({left:i*step(),behavior:"smooth"});dots.appendChild(b)});
+    const mark=()=>{const i=Math.round(track.scrollLeft/step());[...dots.children].forEach((d,k)=>d.setAttribute("aria-current",k===i))};
+    track.addEventListener("scroll",()=>requestAnimationFrame(mark),{passive:true});mark();
+  });
+
+  document.querySelectorAll(".copy").forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      const el=$(btn.dataset.copy), text=el.textContent;
+      const ok=()=>{btn.textContent="복사됨";btn.classList.add("done");setTimeout(()=>{btn.textContent="복사";btn.classList.remove("done")},1600)};
+      const select=()=>{const r=document.createRange();r.selectNodeContents(el);const s=getSelection();s.removeAllRanges();s.addRange(r)};
+      try{navigator.clipboard.writeText(text).then(ok,select)}catch(e){select()}
+    });
+  });
+})();
+</script>
+
+</body>
+</html>
